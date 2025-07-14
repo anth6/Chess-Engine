@@ -4,6 +4,7 @@
 
 int main(){
     
+    all_init();
     
     return 0;
 }

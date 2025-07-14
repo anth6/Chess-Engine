@@ -55,6 +55,13 @@ typedef struct {
 
 } BOARD_S;
 
+/* MACROS */
+#define FR2SQ(f,r) ( (21 +(f) ) + ( (r) * 10) )
+
+
+/* GLOBALS*/
+extern int sq120_to_sq64[BRD_SQ_NUM];
+extern int sq64_to_sq120[64];
 
 
 #endif
