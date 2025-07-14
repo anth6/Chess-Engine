@@ -1,6 +1,25 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include "stdlib.h"
+#include "stdio.h"
+
+#define DEBUG
+
+#ifndef DEBUG
+#define ASSERT(n)
+#else
+#define ASSERT(n) \
+if(!(n)) { \
+printf("%s - Failed ", #n); \
+printf("On %s ", __DATE__); \
+printf("At %s ", __TIME__); \
+printf("In File %s ",__FILE__); \
+printf("At Line %d\n",__LINE__); \
+exit(1); } 
+#endif 
+
+
 
 
 
@@ -43,9 +62,8 @@ typedef struct {
     int side;
     int en_pas;
     int fifty_move;
-    int ply;
+    int play;
     int hist_play;
-
     int castle_perm;
     U64 position_key;
     int piece_number[13]; 
@@ -53,6 +71,9 @@ typedef struct {
     int maj_pieces[3]; // major pieces
     UNDO_S history[MAX_GAME_MOVES]; // an array of moves. Each element is an instance of a move about to be made and info associated with that particular move.
 
+    //piece list -- to kep track of all pieces on board aside from pawns
+    int piece_list[13][10]; // at most there can be 10 of any of the 13 piece types.
+    
 } BOARD_S;
 
 /* MACROS */
@@ -62,6 +83,9 @@ typedef struct {
 /* GLOBALS*/
 extern int sq120_to_sq64[BRD_SQ_NUM];
 extern int sq64_to_sq120[64];
+
+/* FUNCTIONS */
+void all_init();
 
 
 #endif
