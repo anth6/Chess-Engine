@@ -25,16 +25,20 @@ void print_board(){
 }
 
 int main(){
-    int num  = 2;
-    int nuts = 4;
-    ASSERT(num == nuts);
+
+    
 
 
     
     all_init();
-    // print_board();
-    
-
+    print_board();
+    U64 playbitboard = 0ULL;
+    playbitboard |= (1ULL << SQ64(D2));
+    printf("D2 Added! \n \n");
+    print_bit_board(playbitboard);
+    playbitboard |= (1ULL << SQ64(G2));
+    printf("G2 Added! \n \n");
+    print_bit_board(playbitboard);
     
     return 0;
 }
