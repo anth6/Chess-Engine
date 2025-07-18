@@ -79,14 +79,23 @@ typedef struct {
 /* MACROS */
 #define FR2SQ(f,r) ( (21 +(f) ) + ( (r) * 10) ) // converts f,r to 120-based index
 #define SQ64(sq120) sq120_to_sq64[sq120] // just so i don't have to type sq120_to64 each time. Shorter name.
+#define POP(bb) pop_bit(bb)
+#define COUNT(b) count_bits(b)
+
 
 /* GLOBALS*/
 extern int sq120_to_sq64[BRD_SQ_NUM];
 extern int sq64_to_sq120[64];
 
 /* FUNCTIONS */
-void all_init();
-void print_bit_board(U64 bb);
 
+/*init.c*/
+void all_init();
+
+
+/* bitboards.c*/
+void print_bit_board(U64 bb);
+int pop_bit( U64 *bb);
+int count_bits(U64 b);
 
 #endif

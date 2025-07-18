@@ -34,11 +34,18 @@ int main(){
     print_board();
     U64 playbitboard = 0ULL;
     playbitboard |= (1ULL << SQ64(D2));
-    printf("D2 Added! \n \n");
+    playbitboard |= (1ULL << SQ64(D3));
+    playbitboard |= (1ULL << SQ64(D4));
     print_bit_board(playbitboard);
-    playbitboard |= (1ULL << SQ64(G2));
-    printf("G2 Added! \n \n");
+    int count = COUNT(playbitboard);
+    printf("\n");
+    printf("Count: %d\n", count);
+    int index = POP(&playbitboard);
+    printf("Index: %d\n", index);
     print_bit_board(playbitboard);
+    count = COUNT(playbitboard);
+    printf("\n");
+    printf("Count: %d\n", count);
     
     return 0;
 }
